@@ -427,6 +427,58 @@
       border-color:rgba(250,204,21,.26);
     }
 
+    .theme-toggle{
+      position:relative;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+
+    .theme-icon{
+      position:relative;
+      width:22px;
+      height:22px;
+      display:block;
+    }
+
+    .theme-icon-svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      transition:transform .38s ease, opacity .28s ease, filter .28s ease;
+      transform-origin:center;
+    }
+
+    .sun-icon{
+      opacity:0;
+      transform:scale(.55) rotate(-65deg);
+    }
+
+    .moon-icon{
+      opacity:1;
+      transform:scale(1) rotate(0deg);
+    }
+
+    body.light-mode .sun-icon{
+      opacity:1;
+      transform:scale(1) rotate(0deg);
+    }
+
+    body.light-mode .moon-icon{
+      opacity:0;
+      transform:scale(.55) rotate(70deg);
+    }
+
+    .theme-toggle:hover .sun-icon,
+    .theme-toggle:hover .moon-icon{
+      filter:drop-shadow(0 0 10px rgba(250,204,21,.22));
+    }
+
     .menu-toggle{
       display:none;
     }
@@ -1427,8 +1479,7 @@
 
     @media (max-width: 932px){
       .nav-menu,
-      .nav-actions .desktop-cta,
-      .nav-actions .desktop-theme{
+      .nav-actions .desktop-cta{
         display:none;
       }
 
@@ -1576,7 +1627,17 @@
         </nav>
 
         <div class="nav-actions">
-          <button class="theme-toggle desktop-theme" id="themeToggle" aria-label="Alternar tema">☾</button>
+          <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema" title="Alternar tema">
+            <span class="theme-icon" aria-hidden="true">
+              <svg class="theme-icon-svg sun-icon" viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <path d="M12 2.5v2.2M12 19.3v2.2M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2.5 12h2.2M19.3 12h2.2M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"></path>
+              </svg>
+              <svg class="theme-icon-svg moon-icon" viewBox="0 0 24 24" focusable="false">
+                <path d="M20 14.2A7.9 7.9 0 0 1 9.8 4a8.8 8.8 0 1 0 10.2 10.2Z"></path>
+              </svg>
+            </span>
+          </button>
           <a href="#contato" class="btn btn-primary desktop-cta">Solicitar orçamento</a>
           <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
             <span class="menu-toggle-box" aria-hidden="true">
@@ -1596,7 +1657,6 @@
             <a href="#galeria" class="mobile-link">Galeria</a>
             <a href="#sobre" class="mobile-link">Sobre</a>
             <a href="#contato" class="mobile-link">Contato</a>
-            <button class="theme-toggle" id="themeToggleMobile" aria-label="Alternar tema">☾</button>
           </nav>
         </div>
       </div>
@@ -2099,7 +2159,6 @@
     const menuToggle = document.getElementById("menuToggle");
     const mobileMenu = document.getElementById("mobileMenu");
     const themeToggle = document.getElementById("themeToggle");
-    const themeToggleMobile = document.getElementById("themeToggleMobile");
     const fadeEls = document.querySelectorAll(".fade-up");
 
     const heroSection = document.querySelector(".hero");
@@ -2209,8 +2268,10 @@
 
     function updateThemeButtons() {
       const isLight = body.classList.contains("light-mode");
-      if (themeToggle) themeToggle.textContent = isLight ? "☀" : "☾";
-      if (themeToggleMobile) themeToggleMobile.textContent = isLight ? "☀" : "☾";
+      if (themeToggle) {
+        themeToggle.setAttribute("aria-label", isLight ? "Ativar modo escuro" : "Ativar modo claro");
+        themeToggle.setAttribute("title", isLight ? "Ativar modo escuro" : "Ativar modo claro");
+      }
     }
 
     function applyStoredTheme() {
@@ -2276,7 +2337,6 @@
     applyStoredTheme();
 
     if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
-    if (themeToggleMobile) themeToggleMobile.addEventListener("click", toggleTheme);
 
     function openMobileMenu() {
       mobileMenu.classList.add("open");
