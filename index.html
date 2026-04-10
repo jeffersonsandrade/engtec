@@ -24,13 +24,14 @@
   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=100" fetchpriority="high" />
 
+  <script type="text/javascript" src="main.js?attr=..." charset="UTF-8"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Electrician",
     "name": "ENG TEC Serviços Elétricos",
     "description": "Soluções em elétrica industrial, automação, instalações prediais, climatização, projetos de engenharia e locação de caminhão munck.",
-    "telephone": "+55 43 99671-1006",
+    "telephone": "+55 43 99653-1811",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Rua Vinte e Quatro de Maio, 986",
@@ -332,8 +333,24 @@
       width:auto;
       height:68px;
       object-fit:contain;
+      cursor:pointer;
       transition:transform .35s ease, filter .35s ease, drop-shadow .35s ease;
       transform-origin:center;
+    }
+
+    .site-logo:active{
+      transform:scale(.96);
+    }
+
+    .logo-image-wrap,
+    .footer-logo-wrap{
+      transition:transform .3s ease, opacity .3s ease;
+    }
+
+    .logo-image-wrap.is-clicking,
+    .footer-logo-wrap.is-clicking{
+      transform:translateY(-1px) scale(.985);
+      opacity:.96;
     }
 
     .brand-wrap:hover .site-logo,
@@ -423,8 +440,9 @@
     .theme-toggle:hover,
     .menu-toggle:hover,
     .slider-btn:hover{
-      transform:translateY(-2px);
+      transform:translateY(-2px) scale(1.06);
       border-color:rgba(250,204,21,.26);
+      background:rgba(250,204,21,.18);
     }
 
     .theme-toggle{
@@ -743,21 +761,68 @@
       box-shadow:0 0 12px rgba(250,204,21,.35);
     }
 
+
+    .service-list-icons li{
+      display:flex;
+      align-items:flex-start;
+      gap:.7rem;
+    }
+
+    .service-list-icons li::before{
+      display:none;
+    }
+
+    .service-list-icons .icon{
+      width:20px;
+      height:20px;
+      flex:0 0 auto;
+      margin-top:.25rem;
+      color:var(--accent);
+    }
+
+    .service-list-icons .icon svg{
+      width:100%;
+      height:100%;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .service-list-icons .icon-trust{
+      color:#22c55e;
+    }
+
+    .service-list-icons .highlight-item{
+      font-weight:600;
+    }
+
     .slider-shell{
       width:100%;
-      padding:1rem;
-      height:500px;
+      padding:0;
+      height:78vh;
+      min-height:620px;
       display:flex;
       flex-direction:column;
+      border-radius:32px;
+      overflow:hidden;
+      position:relative;
     }
 
     .slider-top{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      z-index:5;
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
       gap:1rem;
-      margin-bottom:1rem;
+      padding:2rem;
       flex-wrap:wrap;
+      background:linear-gradient(to bottom, rgba(0,0,0,.66), transparent);
     }
 
     .slider-actions{
@@ -767,9 +832,10 @@
 
     .slider-viewport{
       overflow:hidden;
-      border-radius:24px;
+      border-radius:32px;
       position:relative;
       flex:1;
+      height:100%;
     }
 
     .slider-track{
@@ -780,6 +846,8 @@
 
     .slide{
       min-width:100%;
+      height:78vh;
+      min-height:620px;
       position:relative;
       overflow:hidden;
     }
@@ -789,7 +857,7 @@
       height:100%;
       min-height:unset;
       overflow:hidden;
-      border-radius:24px;
+      border-radius:32px;
     }
 
     .slide-media img{
@@ -797,23 +865,28 @@
       height:100%;
       min-height:unset;
       object-fit:cover;
-      transition:transform .6s ease, filter .6s ease;
+      transform:scale(1.08);
+      transition:transform 1.2s ease, filter .8s ease;
     }
 
     .slide:hover .slide-media img{
-      transform:scale(1.07);
+      transform:scale(1.12);
       filter:brightness(1.08) saturate(1.06) contrast(1.04);
+    }
+
+    .slide.active .slide-media img{
+      transform:scale(1.16);
     }
 
     .slide-overlay{
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(8,17,31,.14), rgba(8,17,31,.74)),
-        linear-gradient(90deg, rgba(8,17,31,.64), rgba(8,17,31,.18));
+        linear-gradient(to top, rgba(0,0,0,.86), rgba(0,0,0,.22)),
+        linear-gradient(to right, rgba(0,0,0,.72), transparent 58%);
       display:flex;
       align-items:flex-end;
-      padding:2rem;
+      padding:3rem;
     }
 
     .slide-content{
@@ -838,15 +911,15 @@
 
     .slide-title{
       font-family:"Rajdhani",sans-serif;
-      font-size:clamp(1.8rem,3vw,3rem);
+      font-size:clamp(2rem,4vw,3.5rem);
       line-height:.95;
-      margin:0 0 .8rem;
+      margin:0 0 1rem;
     }
 
     .slide-text{
-      color:rgba(255,255,255,.84);
-      font-size:clamp(.98rem,1.3vw,1.05rem);
-      line-height:1.8;
+      color:rgba(255,255,255,.9);
+      font-size:clamp(1rem,1.3vw,1.08rem);
+      line-height:1.85;
       margin:0;
       max-width:62ch;
     }
@@ -856,11 +929,16 @@
     }
 
     .slider-dots{
+      position:absolute;
+      left:50%;
+      bottom:20px;
+      transform:translateX(-50%);
       display:flex;
       justify-content:center;
       gap:.55rem;
-      margin-top:1rem;
+      margin-top:0;
       flex-wrap:wrap;
+      z-index:6;
     }
 
     .slider-dot{
@@ -1390,7 +1468,7 @@
       border-radius:999px;
       display:grid;
       place-items:center;
-      background:var(--success);
+      background:#25D366;
       color:#fff;
       box-shadow:0 16px 40px rgba(0,0,0,.28);
       z-index:999;
@@ -1400,6 +1478,11 @@
 
     .whatsapp-float:hover{
       transform:scale(1.08);
+    }
+
+    .whatsapp-float svg{
+      width:32px;
+      height:32px;
     }
 
     @keyframes floatPulse{
@@ -1436,6 +1519,76 @@
       }
     }
 
+    /* ===== GALERIA COM HEADER ADAPTÁVEL E SLIDER FIXO NO DARK ===== */
+    #galeria .section-head{
+      position:relative;
+      z-index:2;
+    }
+
+    #galeria .section-head .title-lg{
+      color:var(--text);
+    }
+
+    #galeria .section-head .lead{
+      color:var(--muted);
+    }
+
+    body.light-mode #galeria .section-head .title-lg{
+      color:#0f172a;
+    }
+
+    body.light-mode #galeria .section-head .lead{
+      color:#475569;
+    }
+
+    body.light-mode #galeria .section-head .eyebrow{
+      background:rgba(250,204,21,.12);
+      color:#b58900;
+      border-color:rgba(250,204,21,.25);
+    }
+
+    #galeria .slider-shell,
+    body.light-mode #galeria .slider-shell{
+      background:linear-gradient(180deg, rgba(8,17,31,.95), rgba(8,17,31,.85)) !important;
+      border:1px solid rgba(255,255,255,.08) !important;
+    }
+
+    #galeria .slider-top,
+    #galeria .slider-top *,
+    #galeria .slide-overlay,
+    #galeria .slide-overlay *,
+    #galeria .slider-btn,
+    #galeria .slider-dots,
+    #galeria .slider-dots *{
+      color:#f8fafc !important;
+    }
+
+    #galeria .slide-overlay{
+      background:
+        linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.2)),
+        linear-gradient(to right, rgba(0,0,0,.7), transparent) !important;
+    }
+
+    #galeria .slider-btn{
+      background:rgba(255,255,255,.08) !important;
+      border:1px solid rgba(255,255,255,.15) !important;
+      color:#fff !important;
+    }
+
+    #galeria .slider-dot{
+      background:rgba(255,255,255,.2) !important;
+    }
+
+    #galeria .slider-dot.active{
+      background:#facc15 !important;
+    }
+
+    #galeria .slider-top .muted,
+    #galeria .slide-text{
+      color:#cbd5e1 !important;
+    }
+
+
     @media (max-width: 1100px){
       .hero-grid,
       .munck-grid,
@@ -1461,7 +1614,17 @@
       }
 
       .slider-shell{
-        height:420px;
+        height:520px;
+        min-height:520px;
+      }
+
+      .slide{
+        height:520px;
+        min-height:520px;
+      }
+
+      .slide-overlay{
+        padding:2rem;
       }
 
       .area-banner{
@@ -1567,15 +1730,26 @@
       }
 
       .slider-shell{
-        height:340px;
+        height:420px;
+        min-height:420px;
+      }
+
+      .slide{
+        height:420px;
+        min-height:420px;
       }
 
       .slider-top{
         align-items:flex-start;
+        padding:1.2rem;
       }
 
       .slide-title{
         font-size:1.7rem;
+      }
+
+      .slide-overlay{
+        padding:1.35rem;
       }
 
       .site-logo{
@@ -1683,8 +1857,8 @@
           </p>
 
           <div class="hero-actions">
-            <a href="#contato" class="btn btn-primary">Solicitar orçamento agora</a>
-            <a href="#galeria" class="btn btn-outline">Ver serviços realizados</a>
+            <a href="#contato" class="btn btn-primary">Solicitar orçamento</a>
+            <a href="#galeria" class="btn btn-outline">Ver execuções</a>
           </div>
 
           <div class="hero-points">
@@ -1839,7 +2013,7 @@
 
           <div class="slider-viewport">
             <div class="slider-track" id="sliderTrack">
-              <article class="slide">
+              <article class="slide active">
                 <div class="slide-media">
                   <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80" alt="Equipe em serviço técnico elétrico" loading="lazy" decoding="async">
                   <div class="slide-overlay">
@@ -1939,11 +2113,42 @@
             <p class="lead" style="margin-top:1rem;">
               A ENG TEC atua com foco em execução técnica consistente, atendimento próximo e soluções que fazem sentido para a realidade do cliente. O objetivo não é apenas entregar serviço, mas entregar segurança, desempenho e confiança.
             </p>
-            <ul class="service-list">
-              <li>Atendimento regional com mobilidade</li>
-              <li>Execução com padrão profissional</li>
-              <li>Comunicação direta e objetiva</li>
-              <li>Compromisso com prazo, segurança e qualidade</li>
+            <ul class="service-list service-list-icons">
+              <li>
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 12h18"></path>
+                    <path d="M13 6l6 6-6 6"></path>
+                  </svg>
+                </span>
+                Atendimento ágil com estrutura própria para atuação em campo
+              </li>
+              <li>
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                  </svg>
+                </span>
+                Execução técnica com padrão profissional e acabamento organizado
+              </li>
+              <li>
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+                  </svg>
+                </span>
+                Comunicação clara e alinhada com a necessidade do cliente
+              </li>
+              <li class="highlight-item">
+                <span class="icon icon-trust" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z"></path>
+                    <path d="M9.5 12.5l2 2 4-4"></path>
+                  </svg>
+                </span>
+                Compromisso com prazo, segurança e qualidade na entrega
+              </li>
             </ul>
           </div>
 
@@ -2133,9 +2338,9 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div class="footer-logo-wrap">
+      <a href="#inicio" class="footer-logo-wrap" aria-label="Voltar ao início">
         <img src="assets/logo_bg2.png" alt="ENG TEC Serviços Elétricos" class="site-logo footer-logo" loading="lazy" decoding="async" />
-      </div>
+      </a>
       <p class="muted" style="margin:0;">© 2026 ENG TEC Serviços Elétricos. Todos os direitos reservados.</p>
     </div>
   </footer>
@@ -2147,8 +2352,8 @@
     class="whatsapp-float"
     aria-label="Falar no WhatsApp"
   >
-    <svg width="30" height="30" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-      <path d="M19.11 17.41c-.29-.15-1.69-.83-1.95-.92-.26-.1-.45-.15-.64.15-.19.29-.73.92-.89 1.11-.17.2-.33.22-.62.07-.29-.15-1.21-.44-2.31-1.41-.85-.76-1.43-1.7-1.59-1.99-.17-.29-.02-.45.12-.6.13-.13.29-.33.43-.49.14-.16.19-.27.29-.46.1-.2.05-.37-.02-.52-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49l-.55-.01c-.2 0-.52.07-.79.37-.27.29-1.04 1.01-1.04 2.46s1.07 2.85 1.22 3.05c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.71.63.72.23 1.37.2 1.88.12.57-.09 1.69-.69 1.93-1.36.24-.67.24-1.25.17-1.36-.07-.11-.26-.17-.55-.31zM16.14 27.5h-.01a11.3 11.3 0 0 1-5.76-1.58l-.41-.24-4.28 1.12 1.14-4.16-.27-.43a11.31 11.31 0 1 1 9.59 5.29zm9.62-20.9A13.47 13.47 0 0 0 16.17 2.5C8.74 2.5 2.7 8.54 2.7 15.97c0 2.37.62 4.69 1.79 6.73L2.5 29.5l6.98-1.83a13.44 13.44 0 0 0 6.68 1.72h.01c7.43 0 13.47-6.04 13.47-13.47 0-3.6-1.4-6.99-3.88-9.32z"/>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.78 11.78 0 0 0 12.01 0C5.38 0 .01 5.37.01 12c0 2.11.55 4.17 1.6 5.99L0 24l6.17-1.61A11.94 11.94 0 0 0 12 24h.01c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.49-8.52zM12 21.8c-1.8 0-3.55-.48-5.08-1.38l-.36-.21-3.66.96.98-3.57-.23-.37A9.78 9.78 0 0 1 2.2 12C2.2 6.6 6.6 2.2 12 2.2c2.62 0 5.08 1.02 6.93 2.87A9.75 9.75 0 0 1 21.8 12c0 5.4-4.4 9.8-9.8 9.8zm5.42-7.36c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.66.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.07-.15-.66-1.6-.9-2.2-.24-.57-.48-.5-.66-.5h-.56c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.06 2.88 1.2 3.08.15.2 2.08 3.18 5.05 4.45.7.3 1.25.48 1.68.61.7.22 1.33.19 1.83.12.56-.08 1.76-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.19-.57-.34z"/>
     </svg>
   </a>
 
@@ -2255,6 +2460,7 @@
     const contactForm = document.getElementById("contactForm");
     const formMessage = document.getElementById("formMessage");
     const navLinks = document.querySelectorAll(".nav-link, .mobile-link");
+    const logoLinks = document.querySelectorAll(".logo-image-wrap, .footer-logo-wrap");
 
     const sliderTrack = document.getElementById("sliderTrack");
     const slides = Array.from(document.querySelectorAll(".slide"));
@@ -2392,6 +2598,36 @@
           closeMobileMenu();
         }
 
+        history.replaceState(null, "", href);
+      });
+    });
+
+    logoLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (!href || !href.startsWith("#")) return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const navHeight = navbar ? navbar.offsetHeight : 0;
+        const targetY = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+        link.classList.add("is-clicking");
+        setTimeout(() => link.classList.remove("is-clicking"), 320);
+
+        if (window.gsap && target === document.querySelector("#inicio")) {
+          gsap.fromTo(".hero-copy, .hero-frame",
+            { opacity: 0.92, y: 18 },
+            { opacity: 1, y: 0, duration: 0.55, ease: "power2.out", overwrite: true, stagger: 0.04 }
+          );
+        }
+
+        setActiveLink(href);
+        smoothScrollTo(targetY, 820);
+        highlightSection(target);
         history.replaceState(null, "", href);
       });
     });
@@ -2573,6 +2809,11 @@ Mensagem: ${mensagem.value.trim()}`;
 
     function updateSlider() {
       sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      slides.forEach((slide, index) => {
+        slide.classList.toggle("active", index === currentSlide);
+      });
+
       const dots = dotsContainer.querySelectorAll(".slider-dot");
       dots.forEach((dot, index) => {
         dot.classList.toggle("active", index === currentSlide);
