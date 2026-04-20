@@ -18,6 +18,8 @@
   <meta name="geo.placename" content="Santo Antônio da Platina" />
   <meta name="format-detection" content="telephone=yes" />
 
+    <link rel="icon" type="image/svg+xml" href="assets/icon.png" />
+
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link rel="dns-prefetch" href="//images.unsplash.com" />
@@ -600,7 +602,7 @@
       min-height:700px;
       background:
         linear-gradient(135deg, rgba(8,17,31,.65), rgba(15,23,42,.42)),
-        url("https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=100") center center/cover no-repeat;
+        url(assets/hero.jpg) center center/cover no-repeat;
       transition:transform .55s ease;
       will-change:transform, background-position;
       transform:translate3d(0,0,0);
@@ -840,7 +842,7 @@
 
     .slider-track{
       display:flex;
-      transition:transform .7s cubic-bezier(.22,.61,.36,1);
+      transition:transform 1.8s cubic-bezier(.22,.61,.36,1);
       will-change:transform;
     }
 
@@ -1935,7 +1937,7 @@
 
           <article class="service-card span-4 fade-up">
             <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Locação de caminhão munck" loading="lazy" decoding="async">
+              <img src="assets/munck.webp" alt="Locação de caminhão munck" loading="lazy" decoding="async">
             </div>
             <h3 class="title-md">Locação de Caminhão Munck</h3>
             <p class="lead" style="margin-top:.7rem;">
@@ -1950,7 +1952,7 @@
 
           <article class="service-card span-6 fade-up">
             <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1400&q=80" alt="Elétrica predial e residencial" loading="lazy" decoding="async">
+              <img src="https://images.unsplash.com/photo-1553873002-785d775854c9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elétrica predial e residencial" loading="lazy" decoding="async">
             </div>
             <h3 class="title-md">Elétrica Predial e Residencial</h3>
             <p class="lead" style="margin-top:.7rem;">
@@ -1965,7 +1967,7 @@
 
           <article class="service-card span-6 fade-up">
             <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1400&q=80" alt="Climatização e ar-condicionado" loading="lazy" decoding="async">
+              <img src="assets/ar-condicionado.webp" alt="Climatização e ar-condicionado" loading="lazy" decoding="async">
             </div>
             <h3 class="title-md">Climatização e Ar-Condicionado</h3>
             <p class="lead" style="margin-top:.7rem;">
@@ -2060,7 +2062,7 @@
 
               <article class="slide">
                 <div class="slide-media">
-                  <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1600&q=80" alt="Instalação predial" loading="lazy" decoding="async">
+                  <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Instalação predial" loading="lazy" decoding="async">
                   <div class="slide-overlay">
                     <div class="slide-content">
                       <span class="slide-kicker">Instalações</span>
@@ -2836,7 +2838,7 @@ Mensagem: ${mensagem.value.trim()}`;
     function startAutoplay() {
       sliderInterval = setInterval(() => {
         nextSlide();
-      }, 4500);
+      }, 7500);
     }
 
     function stopAutoplay() {
